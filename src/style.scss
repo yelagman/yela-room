@@ -370,9 +370,9 @@ ul {
   height: auto;
 }
 
-.contact .modal-content-wrapper {
-  overflow: visible;
-}
+// .contact .modal-content-wrapper {
+//   overflow: visible;
+// }
 
 .contact-links {
   display: flex;
@@ -679,19 +679,19 @@ ul {
   }
 }
 
-.modal-content-wrapper {
-  &::-webkit-scrollbar-track {
-    @include themed() {
-      background-color: t("scrollbar-track");
-    }
-  }
+// .modal-content-wrapper {
+//   &::-webkit-scrollbar-track {
+//     @include themed() {
+//       background-color: t("scrollbar-track");
+//     }
+//   }
 
-  &::-webkit-scrollbar-thumb {
-    @include themed() {
-      background-color: t("base-dark-green");
-    }
-  }
-}
+//   &::-webkit-scrollbar-thumb {
+//     @include themed() {
+//       background-color: t("base-dark-green");
+//     }
+//   }
+// }
 
 .list-text,
 .list-text-2,
