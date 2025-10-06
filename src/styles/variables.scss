@@ -1,0 +1,15 @@
+$base-dark-green: #333D29;
+$base-green: #656D4A;
+$base-green-200: #A4AC86;
+$base-beige: #B6AD90;
+$base-light-beige: #C2C5AA;
+
+$base-black: #090909;
+$base-white: #fdfdfd;
+
+// Mixins
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

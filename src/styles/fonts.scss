@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Puffy';
+    src: url('/fonts/Puffy.woff2') format('woff2'),
+        url('/fonts/Puffy.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Sans-SemiBold';
+    src: url('/fonts/JosefinSans-SemiBold.woff2') format('woff2'),
+        url('/fonts/JosefinSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('/fontsJosefinSans.woff2') format('woff2'),
+        url('/fonts/JosefinSans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
