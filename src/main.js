@@ -195,29 +195,29 @@ const textureLoader = new THREE.TextureLoader();
 
 // model loader
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setDecoderPath('draco/');
 
 const loader = new GLTFLoader(manager);
 loader.setDRACOLoader(dracoLoader);
 
 const textureMap = {
   First: {
-    day: '/textures/first_texture_set.webp'
+    day: 'textures/first_texture_set.webp'
   },
   Second: {
-    day: '/textures/second_texture_set.webp'
+    day: 'textures/second_texture_set.webp'
   },
   Third: {
-    day: '/textures/third_texture_set.webp'
+    day: 'textures/third_texture_set.webp'
   },
   Fourth: {
-    day: '/textures/fourth_texture_set.webp'
+    day: 'textures/fourth_texture_set.webp'
   },
   Fifth: {
-    day: '/textures/fifth_texture_set.webp'
+    day: 'textures/fifth_texture_set.webp'
   },
   Sixth: {
-    day: '/textures/sixth_texture_set.webp'
+    day: 'textures/sixth_texture_set.webp'
   },
 };
 
@@ -236,7 +236,7 @@ Object.entries(textureMap).forEach(([key, paths]) => {
 });
 
 const videoElement = document.createElement('video');
-videoElement.src = '/video/oned.mp4';
+videoElement.src = 'video/oned.mp4';
 videoElement.loop = true;
 videoElement.autoplay = true;
 videoElement.muted = true;
@@ -308,7 +308,7 @@ const animatedObjects = {};
 
 
 // replace your loader.load with this
-loader.load('/models/Room_Portfolio.glb', (glb) => {
+loader.load('models/Room_Portfolio.glb', (glb) => {
 
   glb.scene.traverse((child) => {
     if (child.isMesh) {
