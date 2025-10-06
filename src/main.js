@@ -236,7 +236,7 @@ Object.entries(textureMap).forEach(([key, paths]) => {
 });
 
 const videoElement = document.createElement('video');
-videoElement.src = 'video/oned.mp4';
+videoElement.src = 'video/frog.mp4';
 videoElement.loop = true;
 videoElement.autoplay = true;
 videoElement.muted = true;
@@ -341,8 +341,6 @@ loader.load('models/Room_Portfolio.glb', (glb) => {
         child.userData.initialPosition = child.position.clone(); // optional
       }
 
-
-
       if (child.name.includes('Mouse') || child.name.includes('Books') || child.name.includes('Camera') || child.name.includes('Rubix_Cube')) {
         child.userData.hoverScale = 1.5;
       } else if (child.name.includes('Backpack')) {
@@ -394,7 +392,7 @@ loader.load('models/Room_Portfolio.glb', (glb) => {
         const frameIndex = child.name.match(/Picture_(\d+)/)?.[1]; // e.g. "1", "2", "3"
 
         // pick your texture based on the frame index
-        const imageTexture = textureLoader.load(`/images/frame_${frameIndex}.webp`);
+        const imageTexture = textureLoader.load(`images/frame_${frameIndex}.webp`);
         imageTexture.flipY = false;
         imageTexture.colorSpace = THREE.SRGBColorSpace;
 
