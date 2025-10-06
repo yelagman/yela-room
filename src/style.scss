@@ -908,3 +908,10 @@ ul {
 .contact .modal-paragraph-header {
   padding-bottom: 0px;
 }
+
+.modal-content-wrapper {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // smooth momentum scroll on iOS
+  height: 100%; 
+  touch-action: pan-y; // allow vertical scrolling
+}
