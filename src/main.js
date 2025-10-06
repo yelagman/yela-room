@@ -274,6 +274,12 @@ window.addEventListener(
   { passive: false }
 );
 
+document.querySelectorAll('.contact-link').forEach(link => {
+  link.addEventListener('touchstart', () => {
+    window.location = link.href; // simulate click
+  });
+});
+
 function handleRaycasterInteraction() {
   if (currentIntersects.length > 0) {
     const object = currentIntersects[0].object;

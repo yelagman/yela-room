@@ -396,6 +396,8 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 8px; // increase touch target
+    touch-action: manipulation; // improves mobile responsiveness
   }
 
   .contact-svg {
@@ -465,6 +467,7 @@ ul {
   height: 30px;
   cursor: pointer;
   color: #333D29;
+  pointer-events: auto;
 
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -822,7 +825,74 @@ ul {
   }
 }
 
+.work-project {
+  @include media.media("<=tablet") {
+    flex-direction: column;
+    gap: 12px; // smaller gap between image and text
+    margin-bottom: 16px; // reduce bottom margin
+  }
+
+  .work-image-wrapper-fill,
+  .work-base-image-fill {
+    @include media.media("<=tablet") {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      border-radius: 12px; // slightly smaller radius on mobile
+      margin: 0 auto; // center images
+    }
+
+    img {
+      @include media.media("<=tablet") {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .paragraph-section {
+    @include media.media("<=tablet") {
+      gap: 4px; // reduce gap between header and text
+      .modal-paragraph-header {
+        font-size: 2rem;
+        margin-top: 12px;
+        margin-bottom: 4px;
+      }
+
+      .modal-paragraph-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+.about .image-wrapper {
+  @include media.media("<=tablet") {
+    width: 80%;       // increase width from default 50%
+    max-width: 100%;  // ensure it doesn’t overflow
+    height: auto;     // keep aspect ratio
+    margin: 0 auto 16px; // center and give a little spacing
+  }
+
+  img {
+    @include media.media("<=tablet") {
+      width: 100%;
+      height: auto;
+      object-fit: cover; // fill wrapper nicely
+    }
+  }
+}
+
 /* Use Josefin Sans Regular */
+.modal-title,
+.modal-paragraph-header,
+.modal-paragraph-header-2 {
+  font-size: 2rem;
+
+}
+
 .modal-title,
 .modal-paragraph-header,
 .modal-paragraph-header-2,
@@ -831,6 +901,10 @@ ul {
 .list-text-2 {
   font-family: "Josefin Sans-SemiBold";
   // font-weight: ; // Regular
-  font-weight: 700;
+  font-weight: 600;
 
+}
+
+.contact .modal-paragraph-header {
+  padding-bottom: 0px;
 }
