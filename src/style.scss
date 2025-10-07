@@ -47,7 +47,7 @@ $themes: (
 }
 
 html, body {
-  overflow: auto; /* Make sure it's not hidden */
+  overflow: auto;
   height: 100%;
 }
 
@@ -59,21 +59,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Experience
-// #experience {
-//   position: fixed;
-//   height: 100%;
-//   width: 100%;
-//   top: 0;
-//   left: 0;
-//   overflow: hidden;
 
-//   #experience-canvas {
-//     height: 100%;
-//     width: 100%;
-//     z-index: 2;
-//   }
-// }
 
 #experience {
   position: fixed;
@@ -81,7 +67,7 @@ html, body {
   height: 100%;
   top: 0;
   left: 0;
-  overflow: hidden; // keep canvas fixed, okay
+  overflow: visible; // keep canvas fixed, okay
 }
 
 
@@ -169,6 +155,7 @@ ul {
 .modal {
   @include vars.centered;
   position: absolute;
+  max-height: 80vh;
   top: 50%;
   left: 50%;
   max-width: 1200px;
@@ -259,17 +246,13 @@ ul {
   max-height: 80vh; // ensure modal isn't taller than viewport
   overflow: visible; // parent allows child to scroll
   position: relative;
-
-  @include media.media("<=tablet") {
-    height: 350px;
-  }
 }
 
 .work .modal-content {
   height: 550px;
 
   @include media.media("<=tablet") {
-    height: 550px;
+    height: 500px;
   }
 }
 
@@ -277,7 +260,7 @@ ul {
   height: 550px;
 
   @include media.media("<=tablet") {
-    height: 550px;
+    height: 500px;
   }
 }
 
@@ -378,16 +361,6 @@ ul {
       line-height: 1.5;
     }
   }
-}
-
-
-.work-project-wrapper {
-  width: 100%;
-  height: auto;
-}
-
-.contact .modal-content-wrapper {
-  overflow: visible;
 }
 
 .contact-links {
@@ -531,114 +504,6 @@ ul {
   margin: 12px;
 }
 
-// Toggle Button
-.mute-toggle-button {
-  position: fixed;
-  top: 36px;
-  right: 148px;
-  z-index: 2;
-
-  cursor: pointer;
-
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  &:hover {
-    transform: rotate(-5deg) scale(1.3);
-  }
-
-  @include media.media("<=tablet") {
-    top: 30px;
-    right: 96px;
-  }
-}
-
-.sound-svg {
-  width: 40px;
-  height: 40px;
-
-  stroke: vars.$base-green;
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.sound-off-svg {
-  width: 40px;
-  height: 40px;
-  display: none;
-  stroke: vars.$base-green;
-
-  @include media.media("<=tablet") {
-    top: 30px;
-    right: 96px;
-  }
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.toggle-buttons {
-  @include vars.centered;
-  border: 8px solid vars.$base-green;
-  background-color: vars.$base-light-beige;
-  padding: 10px;
-  color: vars.$base-green;
-  border-radius: 1.2rem;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.theme-toggle-button {
-  position: fixed;
-  top: 36px;
-  right: 48px;
-  z-index: 2;
-  cursor: pointer;
-
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  &:hover {
-    transform: rotate(5deg) scale(1.3);
-  }
-
-  @include media.media("<=tablet") {
-    top: 30px;
-    right: 18px;
-  }
-}
-
-.sun-svg {
-  width: 40px;
-  height: 40px;
-
-  stroke: vars.$base-green;
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.moon-svg {
-  width: 40px;
-  height: 40px;
-  stroke: vars.$base-green;
-  display: none;
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.sm-font {
-  font-size: 1.2rem;
-}
-
 ul {
   li {
     &:before {
@@ -657,57 +522,6 @@ ul {
   }
 }
 
-.base-image {
-  @include themed() {
-    border-color: t("base-green");
-  }
-}
-
-.work-base-image {
-  @include themed() {
-    border-color: t("base-green");
-  }
-}
-
-.overlay {
-  @include themed() {
-    background-color: t("overlay-bg");
-  }
-}
-
-.modal {
-  @include themed() {
-    border-color: t("base-green");
-    background-color: t("base-light-beige");
-  }
-}
-
-.modal-title {
-  @include themed() {
-    color: t("header-text");
-    background-color: t("base-green-200");
-  }
-}
-
-.modal-paragraph-header-2 {
-  @include themed() {
-    border-color: t("base-green");
-  }
-}
-
-.modal-content-wrapper {
-  &::-webkit-scrollbar-track {
-    @include themed() {
-      background-color: t("scrollbar-track");
-    }
-  }
-
-  &::-webkit-scrollbar-thumb {
-    @include themed() {
-      background-color: t("base-dark-green");
-    }
-  }
-}
 
 .list-text,
 .list-text-2,
@@ -732,22 +546,10 @@ ul {
   }
 }
 
-.toggle-buttons {
-  @include themed() {
-    border-color: t("base-green");
-    background-color: t("base-light-beige");
-    color: t("base-green");
-  }
-}
-
-.sound-svg,
-.sound-off-svg,
-.sun-svg,
 .github,
 .linkedin,
 .instagram,
-.mail,
-.moon-svg {
+.mail{
   @include themed() {
     stroke: t("svgs");
     color: t("svgs");
@@ -784,54 +586,6 @@ ul {
 
   @include media.media("<=tablet") {
     font-size: 32px;
-  }
-}
-
-.no-sound-button {
-  font-family: "Puffy";
-  @include vars.centered;
-  background-color: transparent;
-  border: none;
-  color: #c4bebe;
-
-  position: absolute;
-  bottom: 15%;
-  left: 50%;
-  font-size: 16px;
-  transform: translate(-50%, -50%);
-
-  &:hover {
-    color: #e6dede;
-    cursor: pointer;
-  }
-}
-
-.instructions {
-  @include vars.centered;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  max-width: 1200px;
-  width: 90%;
-  font-size: 28px;
-  transform: translate(-50%, -50%);
-  font-family: "Puffy";
-  color: #e6dede;
-}
-
-.desktop-instructions {
-  @include media.media("<tablet") {
-    display: none;
-  }
-}
-
-.mobile-instructions {
-  @include media.media(">=tablet") {
-    display: none;
-  }
-
-  @include media.media("<=tablet") {
-    font-size: 28px;
   }
 }
 
