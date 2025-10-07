@@ -670,3 +670,56 @@ ul {
   font-weight: 600;
 
 }
+
+
+.modal {
+  @include vars.centered;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 80vh; // limit height
+  transform: translate(-50%, -50%);
+  background-color: vars.$base-light-beige;
+  padding: 30px;
+  border-radius: 25px;
+  border: 8px solid vars.$base-green;
+  display: flex; // use flex to manage children
+  flex-direction: column;
+  box-sizing: border-box; // ensures padding doesn't break max-height
+  overflow: hidden; // hide excess
+}
+
+.modal-content-wrapper {
+  flex: 1 1 auto;  // grow to fill modal
+  min-height: 0;   // critical for Safari scroll
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // smooth scrolling on iOS
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px;
+
+  // scrollbar styling (optional)
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #A4AC86;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: vars.$base-dark-green;
+    border-radius: 4px;
+  }
+
+  // ensure images inside don't break scroll
+  img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0; // prevent images from stretching flex container
+  }
+}
