@@ -46,9 +46,11 @@ $themes: (
   box-sizing: border-box;
 }
 
-body {
-  overflow: auto;
+html, body {
+  overflow: auto; /* Make sure it's not hidden */
+  height: 100%;
 }
+
 
 :root {
   font-synthesis: none;
