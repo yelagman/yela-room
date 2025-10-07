@@ -20,15 +20,15 @@ $themes: (
 @mixin themed() {
   @each $theme, $map in $themes {
     .#{$theme}-theme & {
-      $theme-map: () !global;
-      @each $key, $value in $map {
-        $theme-map: map-merge(
-          $theme-map,
-          (
-            $key: $value,
-          )
+      $theme-map: (
         ) !global;
+
+      @each $key, $value in $map {
+        $theme-map: map-merge($theme-map,
+            ($key: $value,
+            )) !global;
       }
+
       @content;
       $theme-map: null !global;
     }
@@ -36,7 +36,8 @@ $themes: (
 }
 
 @function t($key) {
-  @return map-get($theme-map, $key);
+  @return map-get($theme-map, $key
+);
 }
 
 * {
@@ -46,7 +47,7 @@ $themes: (
 }
 
 body {
-  overflow: hidden;
+  overflow: auto;
 }
 
 :root {
@@ -58,12 +59,10 @@ body {
 
 // Experience
 #experience {
-  position: fixed;
+  position: relative;
   height: 100%;
   width: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+
 
   #experience-canvas {
     height: 100%;
@@ -72,17 +71,6 @@ body {
   }
 }
 
-// Text styles
-h1,
-h2 {
-  font-family: "Motley Forces";
-}
-
-p,
-ul,
-li {
-  font-family: "Shifty Notes";
-}
 
 ul {
   list-style: none;
@@ -130,31 +118,18 @@ ul {
 // Image Styles
 
 .image-wrapper {
-  width: 100%;
-  height: 550px;
+  width: 50%;
+  height: 200;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin: 0 auto 12px; // top 0, auto left/right, bottom 12px
+
   @include media.media("<=tablet") {
     height: auto;
   }
 }
 
+
 .base-image {
-  height: 100%;
-  width: 100%;
-  border-radius: 24px;
-  object-fit: cover;
-  border: 6px solid vars.$base-green;
-}
-
-.work-image-wrapper {
-  width: 100%;
-  height: 350px;
-  overflow: hidden;
-  margin-bottom: 12px;
-}
-
-.work-base-image {
   height: 100%;
   width: 100%;
   border-radius: 24px;
@@ -186,6 +161,7 @@ ul {
   max-width: 1200px;
   width: 90%;
   transform: translate(-50%, -50%);
+  background-color: vars.$base-light-beige;
   font-size: 2.2rem;
   z-index: 9999;
   padding: 30px;
@@ -220,6 +196,7 @@ ul {
   color: vars.$base-dark-green;
   background-color: vars.$base-green-200;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
   @include media.media("<=tablet") {
     font-size: 1.5rem;
     padding: 10px 20px;
@@ -228,26 +205,21 @@ ul {
 }
 
 .modal-paragraph-header {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-top: 24px;
   margin-bottom: 8px;
+  text-align: center; // 👈 centers the text
+  font-weight: 700; // 👈 makes it bold (400 = normal, 700 = bold)
+
   @include media.media("<=tablet") {
     font-size: 1.3rem;
   }
 }
 
-.modal-paragraph-header-2 {
-  border-top: 2px solid vars.$base-green;
-  font-size: 1.2rem;
-  padding-top: 24px;
-  margin-bottom: 8px;
-  @include media.media("<=tablet") {
-    font-size: 1.3rem;
-  }
-}
 
 .modal-paragraph-text {
   font-size: 1.5rem;
+
   @include media.media("<=tablet") {
     font-size: 1.3rem;
   }
@@ -255,6 +227,7 @@ ul {
 
 .list-text {
   font-size: 1.5rem;
+
   @include media.media("<=tablet") {
     font-size: 1.3rem;
   }
@@ -262,6 +235,7 @@ ul {
 
 .list-text-2 {
   font-size: 1.2rem;
+
   @include media.media("<=tablet") {
     font-size: 1.3rem;
   }
@@ -289,6 +263,7 @@ ul {
 
 .about .modal-content {
   height: 550px;
+
   @include media.media("<=tablet") {
     height: 500px;
   }
@@ -296,17 +271,17 @@ ul {
 
 .contact .modal-content {
   height: 170px;
-  overflow: visible;
+  // overflow: visible;
 
   @include media.media("<=tablet") {
-    overflow: visible;
+    // overflow: visible;
     height: 170px;
   }
 }
 
 .modal-content-wrapper {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding-right: 10px;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -319,7 +294,7 @@ ul {
   &::-webkit-scrollbar-track {
     width: 2px;
     border-radius: 4px;
-    background-color: rgba(111, 73, 116, 0.2);
+    background-color: #A4AC86;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -329,29 +304,70 @@ ul {
 }
 
 .work .modal-content-wrapper {
-  @include vars.centered;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // reduced from 32px
+  padding: 12px; // reduced from 16px
+}
+
+
+
+.work-project {
+  display: flex;
   flex-direction: row;
-  gap: 18px;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 24px;
+
   @include media.media("<=tablet") {
-    justify-content: space-between;
     flex-direction: column;
+    gap: 16px;
+  }
+
+  // Internal / zoomed-out images
+  .work-image-wrapper-fill,
+  .work-base-image-fill {
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 16px;
+    flex-shrink: 0;
+    background-color: #C2C5AA; // <-- fills extra space
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border: 4px solid vars.$base-green;
+      border-radius: 16px;
+      background-color: inherit; // <-- ensures the background is same as wrapper
+      display: block; // remove inline spacing below images
+    }
+  }
+
+  .paragraph-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+
+    .modal-paragraph-header {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    .modal-paragraph-text {
+      font-size: 1.4rem;
+      margin: 0;
+      line-height: 1.5;
+    }
   }
 }
 
-.work-project {
-  padding-top: 16px;
-  @include vars.centered;
-  flex-direction: column;
-  gap: 28px;
-  width: 80%;
-  justify-content: start;
-  height: 100%;
-  @include media.media("<=tablet") {
-    height: auto;
-    width: 100%;
-    padding-bottom: 24px;
-  }
-}
 
 .work-project-wrapper {
   width: 100%;
@@ -361,6 +377,40 @@ ul {
 .contact .modal-content-wrapper {
   overflow: visible;
 }
+
+.contact-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px; // spacing between icons
+  margin-top: 8px;
+
+  // Center them on mobile
+  @include media.media("<=tablet") {
+    justify-content: center;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px; // increase touch target
+    touch-action: manipulation; // improves mobile responsiveness
+  }
+
+  .contact-svg {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+    color: vars.$base-dark-green;
+
+    &:hover {
+      transform: rotate(-15deg) scale(1.3);
+    }
+  }
+}
+
+
 
 .modal-exit-button {
   @include vars.centered;
@@ -397,6 +447,7 @@ ul {
   width: 40px;
   height: 40px;
   color: vars.$base-green;
+
   @include media.media("<=tablet") {
     width: 25px;
     height: 25px;
@@ -410,16 +461,28 @@ ul {
 }
 
 .contact-svg {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+  color: #333D29;
+  pointer-events: auto;
 
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.globe {
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    transform: rotate(-15deg) scale(1.3);
+  }
 }
 
 .linkedin {
   width: 60px;
   height: 60px;
+
   &:hover {
     transform: rotate(15deg) scale(1.3);
   }
@@ -428,6 +491,7 @@ ul {
 .github {
   width: 60px;
   height: 60px;
+
   &:hover {
     transform: rotate(-15deg) scale(1.3);
   }
@@ -436,6 +500,7 @@ ul {
 .instagram {
   width: 63px;
   height: 63px;
+
   &:hover {
     transform: rotate(35deg) scale(1.3);
   }
@@ -444,6 +509,7 @@ ul {
 .mail {
   width: 68px;
   height: 68px;
+
   &:hover {
     transform: rotate(-35deg) scale(1.3);
   }
@@ -463,6 +529,7 @@ ul {
   cursor: pointer;
 
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
   &:hover {
     transform: rotate(-5deg) scale(1.3);
   }
@@ -478,6 +545,7 @@ ul {
   height: 40px;
 
   stroke: vars.$base-green;
+
   @include media.media("<=tablet") {
     width: 30px;
     height: 30px;
@@ -489,10 +557,12 @@ ul {
   height: 40px;
   display: none;
   stroke: vars.$base-green;
+
   @include media.media("<=tablet") {
     top: 30px;
     right: 96px;
   }
+
   @include media.media("<=tablet") {
     width: 30px;
     height: 30px;
@@ -502,7 +572,7 @@ ul {
 .toggle-buttons {
   @include vars.centered;
   border: 8px solid vars.$base-green;
-  background-color: vars.$base-beige;
+  background-color: vars.$base-light-beige;
   padding: 10px;
   color: vars.$base-green;
   border-radius: 1.2rem;
@@ -518,6 +588,7 @@ ul {
   cursor: pointer;
 
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
   &:hover {
     transform: rotate(5deg) scale(1.3);
   }
@@ -533,6 +604,7 @@ ul {
   height: 40px;
 
   stroke: vars.$base-green;
+
   @include media.media("<=tablet") {
     width: 30px;
     height: 30px;
@@ -544,6 +616,7 @@ ul {
   height: 40px;
   stroke: vars.$base-green;
   display: none;
+
   @include media.media("<=tablet") {
     width: 30px;
     height: 30px;
@@ -593,7 +666,7 @@ ul {
 .modal {
   @include themed() {
     border-color: t("base-green");
-    background-color: t("base-beige");
+    background-color: t("base-light-beige");
   }
 }
 
@@ -637,7 +710,7 @@ ul {
 .modal-exit-button {
   @include themed() {
     border-color: t("base-green");
-    background-color: t("base-beige");
+    background-color: t("base-light-beige");
   }
 }
 
@@ -650,7 +723,7 @@ ul {
 .toggle-buttons {
   @include themed() {
     border-color: t("base-green");
-    background-color: t("base-beige");
+    background-color: t("base-light-beige");
     color: t("base-green");
   }
 }
@@ -681,13 +754,13 @@ ul {
   overflow: hidden;
   z-index: 999999;
   border: 8px solid vars.$base-green;
-  background-color: #2a0f4e;
+  background-color: #333D29;
   transform: perspective(1000px);
   border-radius: 48px;
 }
 
 .loading-screen-button {
-  font-family: "Motley Forces";
+  font-family: "Puffy";
   @include vars.centered;
   background-color: transparent;
   padding: 10px 40px;
@@ -703,7 +776,7 @@ ul {
 }
 
 .no-sound-button {
-  font-family: "Motley Forces";
+  font-family: "Puffy";
   @include vars.centered;
   background-color: transparent;
   border: none;
@@ -730,7 +803,7 @@ ul {
   width: 90%;
   font-size: 28px;
   transform: translate(-50%, -50%);
-  font-family: "Shifty Notes";
+  font-family: "Puffy";
   color: #e6dede;
 }
 
@@ -744,7 +817,88 @@ ul {
   @include media.media(">=tablet") {
     display: none;
   }
+
   @include media.media("<=tablet") {
     font-size: 28px;
   }
+}
+
+.work-project {
+  @include media.media("<=tablet") {
+    flex-direction: column;
+    gap: 12px; // smaller gap between image and text
+    margin-bottom: 16px; // reduce bottom margin
+  }
+
+  .work-image-wrapper-fill,
+  .work-base-image-fill {
+    @include media.media("<=tablet") {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      border-radius: 12px; // slightly smaller radius on mobile
+      margin: 0 auto; // center images
+    }
+
+    img {
+      @include media.media("<=tablet") {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .paragraph-section {
+    @include media.media("<=tablet") {
+      gap: 4px; // reduce gap between header and text
+      .modal-paragraph-header {
+        font-size: 2rem;
+        margin-top: 12px;
+        margin-bottom: 4px;
+      }
+
+      .modal-paragraph-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+.about .image-wrapper {
+  @include media.media("<=tablet") {
+    width: 80%;       // increase width from default 50%
+    max-width: 100%;  // ensure it doesn’t overflow
+    height: auto;     // keep aspect ratio
+    margin: 0 auto 16px; // center and give a little spacing
+  }
+
+  img {
+    @include media.media("<=tablet") {
+      width: 100%;
+      height: auto;
+      object-fit: cover; // fill wrapper nicely
+    }
+  }
+}
+
+/* Use Josefin Sans Regular */
+.modal-title,
+.modal-paragraph-header,
+.modal-paragraph-header-2 {
+  font-size: 2rem;
+
+}
+
+.modal-title,
+.modal-paragraph-header,
+.modal-paragraph-header-2,
+.modal-paragraph-text,
+.list-text,
+.list-text-2 {
+  font-family: "Josefin Sans-SemiBold";
+  // font-weight: ; // Regular
+  font-weight: 600;
+
 }
