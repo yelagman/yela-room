@@ -58,17 +58,28 @@ body {
 }
 
 // Experience
+// #experience {
+//   position: fixed;
+//   height: 100%;
+//   width: 100%;
+//   top: 0;
+//   left: 0;
+//   overflow: hidden;
+
+//   #experience-canvas {
+//     height: 100%;
+//     width: 100%;
+//     z-index: 2;
+//   }
+// }
+
 #experience {
-  position: relative;
-  height: 100%;
+  position: fixed;
   width: 100%;
-
-
-  #experience-canvas {
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-  }
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden; // keep canvas fixed, okay
 }
 
 
@@ -243,10 +254,9 @@ ul {
 
 .modal-content {
   width: 100%;
-  height: 200px;
-  overflow: hidden;
+  max-height: 80vh; // ensure modal isn't taller than viewport
+  overflow: visible; // parent allows child to scroll
   position: relative;
-  -webkit-overflow-scrolling: touch;
 
   @include media.media("<=tablet") {
     height: 350px;
@@ -257,7 +267,7 @@ ul {
   height: 550px;
 
   @include media.media("<=tablet") {
-    height: 500px;
+    height: 550px;
   }
 }
 
@@ -265,25 +275,25 @@ ul {
   height: 550px;
 
   @include media.media("<=tablet") {
-    height: 500px;
+    height: 550px;
   }
 }
 
 .contact .modal-content {
   height: 170px;
-  // overflow: visible;
+  overflow: visible;
 
   @include media.media("<=tablet") {
-    // overflow: visible;
+    overflow: visible;
     height: 170px;
   }
 }
 
 .modal-content-wrapper {
   height: 100%;
-  overflow-y: scroll;
-  padding-right: 10px;
-  -webkit-overflow-scrolling: touch;
+  max-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // smooth scrolling on iOS
   overscroll-behavior: contain;
   touch-action: pan-y;
 
