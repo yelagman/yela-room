@@ -242,10 +242,12 @@ ul {
 }
 
 .modal-content {
-  width: 100%;
-  max-height: 80vh; // ensure modal isn't taller than viewport
-  overflow: visible; // parent allows child to scroll
   position: relative;
+  width: 100%;
+  max-height: 80vh; // maximum height of the modal
+  display: flex;
+  flex-direction: column; // flex needed to manage children heights
+  overflow: hidden;       // important: hide overflow for parent
 }
 
 .work .modal-content {
@@ -275,12 +277,12 @@ ul {
 }
 
 .modal-content-wrapper {
-  height: 100%;
-  max-height: 100%;
-  overflow-y: auto;
+  flex: 1 1 auto;  
+  overflow-y: auto; 
   -webkit-overflow-scrolling: touch; // smooth scrolling on iOS
   overscroll-behavior: contain;
   touch-action: pan-y;
+  min-height: 0;  
 
   &::-webkit-scrollbar {
     width: 8px;
