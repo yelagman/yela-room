@@ -59,12 +59,12 @@ $themes: (
 
 // Experience
 #experience {
-  position: fixed;
+  position: relative;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  overflow: hidden;
+  // overflow: hidden;
 
   #experience-canvas {
     height: 100%;
@@ -122,7 +122,7 @@ ul {
 .image-wrapper {
   width: 50%;
   height: 200;
-  overflow: hidden;
+  // overflow: hidden;
   margin: 0 auto 12px; // top 0, auto left/right, bottom 12px
 
   @include media.media("<=tablet") {
@@ -143,8 +143,8 @@ ul {
 .overlay {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
-  position: fixed;
+  // overflow: hidden;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 3;
@@ -246,7 +246,7 @@ ul {
 .modal-content {
   width: 100%;
   height: 200px;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
   -webkit-overflow-scrolling: touch;
 
@@ -273,20 +273,20 @@ ul {
 
 .contact .modal-content {
   height: 170px;
-  overflow: visible;
+  // overflow: visible;
 
   @include media.media("<=tablet") {
-    overflow: visible;
+    // overflow: visible;
     height: 170px;
   }
 }
 
 .modal-content-wrapper {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding-right: 10px;
   -webkit-overflow-scrolling: touch;
-  position: relative;
+  position: absolute;
   overscroll-behavior: contain;
   touch-action: pan-y;
 
@@ -333,7 +333,7 @@ ul {
   .work-base-image-fill {
     width: 400px;
     height: 250px;
-    overflow: hidden;
+    // overflow: hidden;
     border-radius: 16px;
     flex-shrink: 0;
     background-color: #C2C5AA; // <-- fills extra space
@@ -522,109 +522,7 @@ ul {
   margin: 12px;
 }
 
-// Toggle Button
-.mute-toggle-button {
-  position: fixed;
-  top: 36px;
-  right: 148px;
-  z-index: 2;
 
-  cursor: pointer;
-
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  &:hover {
-    transform: rotate(-5deg) scale(1.3);
-  }
-
-  @include media.media("<=tablet") {
-    top: 30px;
-    right: 96px;
-  }
-}
-
-.sound-svg {
-  width: 40px;
-  height: 40px;
-
-  stroke: vars.$base-green;
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.sound-off-svg {
-  width: 40px;
-  height: 40px;
-  display: none;
-  stroke: vars.$base-green;
-
-  @include media.media("<=tablet") {
-    top: 30px;
-    right: 96px;
-  }
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.toggle-buttons {
-  @include vars.centered;
-  border: 8px solid vars.$base-green;
-  background-color: vars.$base-light-beige;
-  padding: 10px;
-  color: vars.$base-green;
-  border-radius: 1.2rem;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.theme-toggle-button {
-  position: fixed;
-  top: 36px;
-  right: 48px;
-  z-index: 2;
-  cursor: pointer;
-
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  &:hover {
-    transform: rotate(5deg) scale(1.3);
-  }
-
-  @include media.media("<=tablet") {
-    top: 30px;
-    right: 18px;
-  }
-}
-
-.sun-svg {
-  width: 40px;
-  height: 40px;
-
-  stroke: vars.$base-green;
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.moon-svg {
-  width: 40px;
-  height: 40px;
-  stroke: vars.$base-green;
-  display: none;
-
-  @include media.media("<=tablet") {
-    width: 30px;
-    height: 30px;
-  }
-}
 
 .sm-font {
   font-size: 1.2rem;
@@ -747,14 +645,14 @@ ul {
 
 .loading-screen {
   @include vars.centered;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 108vw;
   height: 108vh;
   margin-left: -54vw;
   margin-top: -54vh;
-  overflow: hidden;
+  // overflow: hidden;
   z-index: 999999;
   border: 8px solid vars.$base-green;
   background-color: #333D29;
