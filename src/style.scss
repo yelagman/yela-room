@@ -678,3 +678,33 @@ ul {
 }
 
 
+
+.modal-content-wrapper {
+  flex: 1 1 auto;
+  overflow-y: auto; 
+  -webkit-overflow-scrolling: touch; // smooth momentum scrolling on iOS
+  overscroll-behavior: contain;
+  touch-action: pan-y; // allow vertical touch scrolling
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  // Optional: prevent Safari from bouncing
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    width: 2px;
+    border-radius: 4px;
+    background-color: #A4AC86;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: vars.$base-dark-green;
+    border-radius: 4px;
+  }
+}

@@ -19,6 +19,9 @@ const modals = {
 }
 let touchHappened = false;
 
+const disableBodyScroll = () => document.body.style.overflow = 'hidden';
+const enableBodyScroll = () => document.body.style.overflow = 'auto';
+
 document.querySelectorAll(".modal-exit-button").forEach((button) => {
 
   button.addEventListener('touchend', (e) => {
@@ -43,6 +46,7 @@ const showModal = (modal) => {
   modal.style.display = "block";
   isModalOpen = true;
   controls.enabled = false;
+  disableBodyScroll();
 
   if (currentHoveredObject) {
     playHoverAnimation(currentHoveredObject, false);
@@ -64,6 +68,7 @@ const hideModal = (modal) => {
 
   isModalOpen = false;
   controls.enabled = true;
+  enableBodyScroll();
 
   gsap.to(modal, {
     opacity: 0,
