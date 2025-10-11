@@ -3,23 +3,33 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="icon" href="./images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="./src/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>yela-room</title>
-  <script type="module" crossorigin src="/yela-room/assets/index-dnHSxxpM.js"></script>
-  <link rel="stylesheet" crossorigin href="/yela-room/assets/index-Ce_FPKv2.css">
+  <meta name="author" content="Yelaman Moldagali">
+  <meta name="keywords" content="3D portfolio, Three.js, GSAP, WebGL, Blender, Yelaman Moldagali, developer portfolio">
+  <meta name="description" content="This is my interactive 3D portfolio, built with Three.js, GSAP, and Blender.">
+  <meta property="og:title" content="Yela's Room">
+  <meta property="og:description" content="Explore my 3D interactive room portfolio!">
+  <meta property="og:image" content="https://yelagman.github.io/yela-room/images/preview.webp">
+  <meta property="og:type" content="website">
+  <meta itemprop="image" content="https://yelagman.github.io/yela-room/images/preview.webp" />
+  <meta name="theme-color" content="#333D29">
+  <meta property="og:url" content="https://yelagman.github.io/yela-room/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="module" crossorigin src="/yela-room/assets/index-Dn71TB8L.js"></script>
+  <link rel="stylesheet" crossorigin href="/yela-room/assets/index-jMO5HQ6-.css">
 </head>
 
 <body>
   <div id="app"></div>
 
   <div class="loading-screen">
-    <button class="loading-screen-button">
+    <button class="loading-screen-button" aria-label="Enter the 3D experience">
       Loading...
     </button>
   </div>
-
 
   <div class="overlay"></div>
 
@@ -32,7 +42,7 @@
           <!-- Eye Tracking Research Assistant -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/etra.png" alt="Eye Tracking Research" />
+              <img class="work-base-image-fill" src="./images/etra.png" alt="Eye Tracking Research" loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">Multilingual Eyetracking Research Project</h2>
@@ -40,29 +50,29 @@
                 A multilingual eye-tracking experiment analyzing how native and non-native speakers read across 10+
                 languages using Pygaze and EyeLink. Published at ACM ETRA 2023.
               </p>
-              <a class="contact-link" href="https://dl.acm.org/doi/10.1145/3588015.3590128" target="_blank"
-                rel="noopener noreferrer">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="contact-svg globe"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                  <path d="M12 3C12 3 8.5 6 8.5 12C8.5 18 12 21 12 21" stroke="currentColor" stroke-width="2"
-                    stroke-linejoin="round" />
-                  <path d="M12 3C12 3 15.5 6 15.5 12C15.5 18 12 21 12 21" stroke="currentColor" stroke-width="2"
-                    stroke-linejoin="round" />
-                  <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                  <path d="M19.5 7.5H4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                  <path d="M19.5 16.5H4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                </svg>
-              </a>
-
-
+              <div class="contact-links">
+                <a class="contact-link" href="https://dl.acm.org/doi/10.1145/3588015.3590128" target="_blank"
+                  aria-label="Visit to read my paper" rel="noopener noreferrer">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="contact-svg"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M12 3C12 3 8.5 6 8.5 12C8.5 18 12 21 12 21" stroke="currentColor" stroke-width="2"
+                      stroke-linejoin="round" />
+                    <path d="M12 3C12 3 15.5 6 15.5 12C15.5 18 12 21 12 21" stroke="currentColor" stroke-width="2"
+                      stroke-linejoin="round" />
+                    <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M19.5 7.5H4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M19.5 16.5H4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- VR Software Research Assistant -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/vr.png" alt="VR Research" />
+              <img class="work-base-image-fill" src="./images/vr.png" alt="VR Research" loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">VR Self-Motion Simulation</h2>
@@ -70,25 +80,27 @@
                 A Unity VR environment built with C# and OpenXR to simulate natural self-motion, investigating human
                 perception in immersive spaces.
               </p>
-              <a class="contact-link" href="https://github.com/owlayton/OWLab-experiments" target="_blank"
-                rel="noopener noreferrer">
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
-                    stroke="currentColor" stroke-width="66.6667" />
-                  <path
-                    d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
-                    stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+              <div class="contact-links">
+                <a class="contact-link" href="https://github.com/owlayton/OWLab-experiments" target="_blank"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
+                      stroke="currentColor" stroke-width="66.6667" />
+                    <path
+                      d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
+                      stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Mobile App Developer - Camel Management -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/android.png" alt="Camel Management App" />
+              <img class="work-base-image-fill" src="./images/android.png" alt="Camel Management App" loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">Camel Farm Management Mobile App</h2>
@@ -96,25 +108,28 @@
                 A Kotlin app built with Jetpack Compose and Firebase to help farmers manage camel herds, track health,
                 and sync data in real time across devices.
               </p>
-              <a class="contact-link" href="https://github.com/yelagman/CamelApp" target="_blank"
-                rel="noopener noreferrer">
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
-                    stroke="currentColor" stroke-width="66.6667" />
-                  <path
-                    d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
-                    stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+              <div class="contact-links">
+                <a class="contact-link" href="https://github.com/yelagman/CamelApp" target="_blank"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg "
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
+                      stroke="currentColor" stroke-width="66.6667" />
+                    <path
+                      d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
+                      stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Web Developer - International Program -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/international.webp" alt="International Student App" />
+              <img class="work-base-image-fill" src="./images/international.webp" alt="International Student App"
+                loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">International Program Web Dashboard</h2>
@@ -124,8 +139,8 @@
               </p>
               <div class="contact-links">
                 <a class="contact-link" href="https://intapp-f95d32a0df1a.herokuapp.com/login?next=%2F" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="contact-svg globe"
+                  aria-label="Visit the website" rel="noopener noreferrer">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="contact-svg "
                     xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                     <path d="M12 3C12 3 8.5 6 8.5 12C8.5 18 12 21 12 21" stroke="currentColor" stroke-width="2"
@@ -138,8 +153,8 @@
                   </svg>
                 </a>
                 <a class="contact-link" href="https://github.com/obray855/CS321-IntApp" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg "
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
@@ -155,7 +170,8 @@
 
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/roomfolio.png" alt="Yela's Room Portfolio" />
+              <img class="work-base-image-fill" src="./images/roomfolio.png" alt="Yela's Room Portfolio"
+                loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">Room Portfolio</h2>
@@ -165,9 +181,9 @@
                 visuals with smooth animations and handcrafted 3D models.
               </p>
               <div class="contact-links">
-                <a class="contact-link" href="https://yelagman.github.io/templates/index.html" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="contact-svg globe"
+                <a class="contact-link" href="https://yelagman.github.io/yela-room/" target="_blank"
+                  aria-label="Visit the website" rel="noopener noreferrer">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="contact-svg "
                     xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                     <path d="M12 3C12 3 8.5 6 8.5 12C8.5 18 12 21 12 21" stroke="currentColor" stroke-width="2"
@@ -179,9 +195,9 @@
                     <path d="M19.5 16.5H4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                   </svg>
                 </a>
-                <a class="contact-link" href="https://github.com/yelagman/yelagman.github.io" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
+                <a class="contact-link" href="https://github.com/yelagman/yela-room" target="_blank"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg "
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
@@ -199,32 +215,34 @@
           <!-- Kazakh Predictive Keyboard -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/keyboard.png" alt="Kazakh Keyboard App" />
+              <img class="work-base-image-fill" src="./images/keyboard.png" alt="Kazakh Keyboard App" loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">Kazakh Predictive Keyboard</h2>
               <p class="modal-paragraph-text">
                 An offline keyboard for Kazakh built with SQLite and Hugging Face NLP models.
               </p>
-              <a class="contact-link" href="https://github.com/yelagman/QazType" target="_blank"
-                rel="noopener noreferrer">
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
-                    stroke="currentColor" stroke-width="66.6667" />
-                  <path
-                    d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
-                    stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+              <div class="contact-links">
+                <a class="contact-link" href="https://github.com/yelagman/QazType" target="_blank"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg "
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
+                      stroke="currentColor" stroke-width="66.6667" />
+                    <path
+                      d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
+                      stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Numberboxd TV Tracker -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/numberboxd.png" alt="TV Tracker App" />
+              <img class="work-base-image-fill" src="./images/numberboxd.png" alt="TV Tracker App" loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">Numberboxd: TV Tracker App</h2>
@@ -232,25 +250,27 @@
                 An Android app that lets users rank and track their favorite TV shows, built in Kotlin with the TMDB
                 API.
               </p>
-              <a class="contact-link" href="https://github.com/yelagman/Numberboxd" target="_blank"
-                rel="noopener noreferrer">
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
-                    stroke="currentColor" stroke-width="66.6667" />
-                  <path
-                    d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
-                    stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+              <div class="contact-links">
+                <a class="contact-link" href="https://github.com/yelagman/Numberboxd" target="_blank"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg "
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
+                      stroke="currentColor" stroke-width="66.6667" />
+                    <path
+                      d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
+                      stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- TuneTrends ML Project -->
           <div class="work-project">
             <div class="work-image-wrapper-fill">
-              <img class="work-base-image-fill" src="/yela-room/images/tunetrends.png" alt="Music ML Project" />
+              <img class="work-base-image-fill" src="./images/tunetrends.png" alt="Music ML Project" loading="lazy" />
             </div>
             <div class="paragraph-section">
               <h2 class="modal-paragraph-header">TuneTrends: Music Popularity Analysis</h2>
@@ -258,18 +278,20 @@
                 An ML project analyzing 6,000+ Billboard tracks using Scikit-learn, SHAP, and Spotify API to predict
                 song popularity trends.
               </p>
-              <a class="contact-link" href="https://github.com/yelagman/TuneTrends" target="_blank"
-                rel="noopener noreferrer">
-                <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg globe"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
-                    stroke="currentColor" stroke-width="66.6667" />
-                  <path
-                    d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
-                    stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+              <div class="contact-links">
+                <a class="contact-link" href="https://github.com/yelagman/TuneTrends" target="_blank"
+                  aria-label="Visit the Github repo" rel="noopener noreferrer">
+                  <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg "
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
+                      stroke="currentColor" stroke-width="66.6667" />
+                    <path
+                      d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
+                      stroke="currentColor" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -297,8 +319,8 @@
         <div class="modal-content-wrapper">
           <div class="paragraph-section">
             <div class="image-wrapper">
-              <img class="base-image" src="/yela-room/assets/yela-DfW_kc-k.webp" alt="Profile picture of Yelaman Moldagali"
-                srcset="" />
+              <img class="base-image" src="./images/yela.webp" alt="Profile picture of Yelaman Moldagali"
+                loading="lazy" />
             </div>
 
             <h2 class="modal-paragraph-header">
@@ -311,101 +333,42 @@
             </p>
 
             <p class="modal-paragraph-text sm-margin-top">
-              In my free time, I enjoy playing guitar, trying new foods, and taking pictres with my camera. I also love
+              In my free time, I enjoy playing guitar, trying new foods, and taking pictures with my camera. I also love
               learning languages, currently trying to learn French and Vietnamese :)
             </p>
 
             <h2 class="modal-paragraph-header">Portfolio Credits & Inspirations:</h2>
             <ul>
               <li class="list-text-2">
-                I made this portfolio with the help of <a href="https://www.youtube.com/@andrewwoan"
-                  target="_blank">Andrew Woan</a>. He does great tutorials for making portfolio projects using Blender
-                and Three.js! I was also inspired by <a href="https://www.evelynhsiao.dev/" target="_blank">Evelyn
-                  Hsiao's</a> portfolio!
+                I made this portfolio with the help of
+                <a href="https://www.youtube.com/@andrewwoan" target="_blank">Andrew Woan</a>.
+                He does great tutorials for making portfolio projects using Blender and Three.js!
+                I was also inspired by
+                <a href="https://www.evelynhsiao.dev/" target="_blank">Evelyn Hsiao's</a> portfolio!
               </li>
 
               <li class="list-text-2">
-                I used some 3D materials made by the community on Sketchfab, such as:
+                I also used several community-made 3D assets from
+                <a href="https://sketchfab.com" target="_blank">Sketchfab</a>, all licensed under
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>:
               </li>
 
               <li class="list-text-2">
                 <em>Spider-punk Plush</em> by
                 <a href="https://sketchfab.com/cosminbora00" target="_blank">cosminbora00</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/spider-punk-plush-4f70a46b9d4c4097951fa1e91621b6a4"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
                 <em>Vinyl Player</em> by
                 <a href="https://sketchfab.com/willemthwing" target="_blank">willemthwing</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/vinyl-player-69ce877c820448528a02800c8e7933a5"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
                 <em>Backpack Low-Poly</em> by
                 <a href="https://sketchfab.com/dimaponomar2019" target="_blank">dimaponomar2019</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/backpack-low-poly-d7225bdd1d6c42d992485d72438cab28"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
                 <em>Camera (Fujifilm)</em> by
                 <a href="https://sketchfab.com/yan14" target="_blank">yan14</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/camera-fujifilm-f0f28b67a39f4884ac15f133caac3b35"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
-                <em>Persian Tabriz Pictorial Carpet</em> by
-                <a href="https://sketchfab.com/mfb64" target="_blank">mfb64</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/persian-tabriz-pictorial-carpet-0ce2fc1e54724cb79cbb08ab2182760a"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
-                <em>Blahaj</em> by
-                <a href="https://sketchfab.com/Kaine_G" target="_blank">Kaine_G</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/blahaj-ce981de49111488c81ea646067abe1ec"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
+                <em>Persian Tabriz Pictorial Carpet</em> and
                 <em>Vinyls 1</em> by
                 <a href="https://sketchfab.com/mfb64" target="_blank">mfb64</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/vinyls-1-159fbaa320324c98af849a49eeae2461"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
-              </li>
-
-              <li class="list-text-2">
+                <em>Blahaj</em> by
+                <a href="https://sketchfab.com/Kaine_G" target="_blank">Kaine_G</a>, and
                 <em>Wooden World Map Decor</em> by
-                <a href="https://sketchfab.com/trietau" target="_blank">Tom Au</a>,
-                available on
-                <a href="https://sketchfab.com/3d-models/wooden-world-map-decor-9ed6d248efc94bc5a076c67fcad2670f"
-                  target="_blank">Sketchfab</a>
-                under
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC Attribution 4.0</a>.
+                <a href="https://sketchfab.com/trietau" target="_blank">Tom Au</a>.
               </li>
             </ul>
           </div>
@@ -435,7 +398,8 @@
               Please reach out :)
             </h2>
             <div class="contact-button-wrapper">
-              <a class="contact-link" href="mailto:yela.ughter@gmail.com" target="_blank" rel="noopener noreferrer">
+              <a class="contact-link" href="mailto:yela.ughter@gmail.com" target="_blank" rel="noopener noreferrer"
+                aria-label="Write me an email">
                 <svg class="contact-svg mail" width="800" height="800" viewBox="0 0 800 800" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -443,7 +407,8 @@
                     stroke="currentColor" stroke-width="66.7" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
-              <a class="contact-link" href="https://github.com/yelagman" target="_blank" rel="noopener noreferrer">
+              <a class="contact-link" href="https://github.com/yelagman" target="_blank" rel="noopener noreferrer"
+                aria-label="Visit my Github">
                 <svg width="800" height="800" viewBox="0 0 800 800" fill="none" class="contact-svg github"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -455,7 +420,7 @@
                 </svg>
               </a>
               <a class="contact-link" href="https://www.linkedin.com/in/yelaman-moldagali/" target="_blank"
-                rel="noopener noreferrer">
+                aria-label="Visit my LinkedIn" rel="noopener noreferrer">
                 <svg width="800" height="800" viewBox="0 0 800 800" class="contact-svg linkedin" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_371_15)">
@@ -471,7 +436,7 @@
                 </svg>
               </a>
               <a class="contact-link" href="https://www.instagram.com/jibaliba/" target="_blank"
-                rel="noopener noreferrer">
+                aria-label="Visit my Instagram" rel="noopener noreferrer">
                 <svg class="contact-svg instagram" width="800" height="800" viewBox="0 0 800 800" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -504,6 +469,10 @@
   <div id="experience">
     <canvas id="experience-canvas" class="experience-canvas"></canvas>
   </div>
+  <noscript>
+    <p>This site is a 3D interactive experience. Please enable JavaScript to explore the room!</p>
+  </noscript>
 
 </body>
+
 </html>

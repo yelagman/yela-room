@@ -3,54 +3,11 @@
 @use "./styles/variables.scss" as vars;
 @use "./styles/defaults.scss" as media;
 
-
-$themes: (
-  light: (base-dark-green: #333D29,
-    base-green: #656D4A,
-    base-green-200: #A4AC86,
-    base-beige: #B6AD90,
-    base-light-beige: #C2C5AA,
-    header-text: #333D29,
-    text: #020202,
-    svgs: #656D4A,
-  )
-);
-
-// Theme mixins
-@mixin themed() {
-  @each $theme, $map in $themes {
-    .#{$theme}-theme & {
-      $theme-map: (
-        ) !global;
-
-      @each $key, $value in $map {
-        $theme-map: map-merge($theme-map,
-            ($key: $value,
-            )) !global;
-      }
-
-      @content;
-      $theme-map: null !global;
-    }
-  }
-}
-
-@function t($key) {
-  @return map-get($theme-map, $key
-);
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-html, body {
-  overflow: auto;
-  height: 100%;
-}
-
 
 :root {
   font-synthesis: none;
@@ -59,17 +16,13 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 #experience {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  overflow: visible; // keep canvas fixed, okay
 }
-
 
 ul {
   list-style: none;
@@ -85,9 +38,14 @@ ul {
       left: -1.5rem;
       color: vars.$base-green;
       font-size: 1.5em;
+      transition: all 0.2s ease;
     }
 
-    // Nested lists
+    &:hover:before {
+      color: vars.$base-dark-green;
+      transform: scale(1.2);
+    }
+
     ul {
       margin-top: 0.5rem;
 
@@ -96,37 +54,24 @@ ul {
         font-size: 1.2em;
       }
 
-      // Third level nesting
       ul li:before {
         content: "▪";
         font-size: 1em;
       }
     }
   }
-
-  // Hover effect
-  li:hover {
-    &:before {
-      color: vars.$base-dark-green;
-      transform: scale(1.2);
-      transition: all 0.2s ease;
-    }
-  }
 }
-
-// Image Styles
 
 .image-wrapper {
   width: 50%;
   height: 200;
   overflow: hidden;
-  margin: 0 auto 12px; // top 0, auto left/right, bottom 12px
+  margin: 0 auto 12px;
 
   @include media.media("<=tablet") {
     height: auto;
   }
 }
-
 
 .base-image {
   height: 100%;
@@ -136,7 +81,6 @@ ul {
   border: 6px solid vars.$base-green;
 }
 
-// Overlay
 .overlay {
   height: 100vh;
   width: 100vw;
@@ -151,10 +95,9 @@ ul {
   -webkit-backdrop-filter: blur(4px);
 }
 
-//Modals
 .modal {
   @include vars.centered;
-  position: absolute;
+  position: fixed;
   max-height: 80vh;
   top: 50%;
   left: 50%;
@@ -168,6 +111,7 @@ ul {
   border-radius: 25px;
   display: none;
   border: 8px solid vars.$base-green;
+  overscroll-behavior: contain;
 }
 
 .about {
@@ -183,6 +127,7 @@ ul {
   width: 100%;
   flex-direction: column;
   gap: 24px;
+  min-height: 0;
 }
 
 .sm-margin-top {
@@ -208,14 +153,13 @@ ul {
   font-size: 2rem;
   margin-top: 24px;
   margin-bottom: 8px;
-  text-align: center; // 👈 centers the text
-  font-weight: 700; // 👈 makes it bold (400 = normal, 700 = bold)
+  text-align: center;
+  font-weight: 700;
 
   @include media.media("<=tablet") {
     font-size: 1.3rem;
   }
 }
-
 
 .modal-paragraph-text {
   font-size: 1.5rem;
@@ -244,25 +188,13 @@ ul {
 .modal-content {
   position: relative;
   width: 100%;
+  height: 550px;
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden; // parent hides overflow
-
-  // iOS fix
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
-}
-
-.work .modal-content {
-  height: 550px;
-
-  @include media.media("<=tablet") {
-    height: 500px;
-  }
-}
-
-.about .modal-content {
-  height: 550px;
+  touch-action: pan-y;
 
   @include media.media("<=tablet") {
     height: 500px;
@@ -280,15 +212,16 @@ ul {
 }
 
 .modal-content-wrapper {
-  flex: 1 1 auto;  
-  overflow-y: auto; 
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   touch-action: pan-y;
-  min-height: 0;  
-
-  // prevent weird iOS rubberband
-  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -306,15 +239,6 @@ ul {
   }
 }
 
-.work .modal-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; // reduced from 32px
-  padding: 12px; // reduced from 16px
-}
-
-
-
 .work-project {
   display: flex;
   flex-direction: row;
@@ -323,12 +247,6 @@ ul {
   width: 100%;
   margin-bottom: 24px;
 
-  @include media.media("<=tablet") {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  // Internal / zoomed-out images
   .work-image-wrapper-fill,
   .work-base-image-fill {
     width: 400px;
@@ -336,7 +254,7 @@ ul {
     overflow: hidden;
     border-radius: 16px;
     flex-shrink: 0;
-    background-color: #C2C5AA; // <-- fills extra space
+    background-color: #C2C5AA;
 
     img {
       width: 100%;
@@ -344,8 +262,8 @@ ul {
       object-fit: contain;
       border: 4px solid vars.$base-green;
       border-radius: 16px;
-      background-color: inherit; // <-- ensures the background is same as wrapper
-      display: block; // remove inline spacing below images
+      background-color: inherit;
+      display: block;
     }
   }
 
@@ -353,7 +271,6 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 6px;
-
 
     .modal-paragraph-header {
       font-size: 2rem;
@@ -369,41 +286,62 @@ ul {
       line-height: 1.5;
     }
   }
+
+  @include media.media("<=tablet") {
+    flex-direction: column;
+    margin-bottom: 0;
+
+    .work-image-wrapper-fill,
+    .work-base-image-fill {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    .paragraph-section {
+      gap: 4px;
+
+      .modal-paragraph-header {
+        font-size: 2rem;
+        margin-top: 12px;
+        margin-bottom: 4px;
+      }
+
+      .modal-paragraph-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+    }
+  }
 }
 
 .contact-links {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 12px; // spacing between icons
-  margin-top: 8px;
-
-  // Center them on mobile
-  @include media.media("<=tablet") {
-    justify-content: center;
-  }
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+  flex-wrap: wrap;
 
   .contact-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px; // increase touch target
-    touch-action: manipulation; // improves mobile responsiveness
+    padding: 4px;
+    touch-action: manipulation;
   }
 
-  .contact-svg {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s ease;
-    color: vars.$base-dark-green;
-
-    &:hover {
-      transform: rotate(-15deg) scale(1.3);
-    }
+  @include media.media("<=tablet") {
+    gap: 6px;
   }
 }
-
-
 
 .modal-exit-button {
   @include vars.centered;
@@ -424,7 +362,7 @@ ul {
   }
 
   @include media.media("<=tablet") {
-    // Reset the top and left positions
+
     top: auto;
     left: 50%;
     bottom: -3rem;
@@ -449,62 +387,40 @@ ul {
 
 .contact-button-wrapper {
   @include vars.centered;
-  margin-top: 24px;
-  justify-content: space-between;
+  margin-top: 30px;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  padding-inline: 8px;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+  transform: translateY(0);
+
+  @include media.media("<=tablet") {
+    gap: 24px;
+    margin-top: 36px;
+    padding-inline: 4px;
+  }
 }
 
 .contact-svg {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  color: vars.$base-dark-green;
   cursor: pointer;
-  color: #333D29;
   pointer-events: auto;
-
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.globe {
-  width: 40px;
-  height: 40px;
+  flex-shrink: 0;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), color 0.25s ease-out;
 
   &:hover {
-    transform: rotate(-15deg) scale(1.3);
+    transform: scale(1.3) rotate(-15deg);
   }
-}
 
-.linkedin {
-  width: 60px;
-  height: 60px;
-
-  &:hover {
-    transform: rotate(15deg) scale(1.3);
-  }
-}
-
-.github {
-  width: 60px;
-  height: 60px;
-
-  &:hover {
-    transform: rotate(-15deg) scale(1.3);
-  }
-}
-
-.instagram {
-  width: 63px;
-  height: 63px;
-
-  &:hover {
-    transform: rotate(35deg) scale(1.3);
-  }
-}
-
-.mail {
-  width: 68px;
-  height: 68px;
-
-  &:hover {
-    transform: rotate(-35deg) scale(1.3);
+  @include media.media("<=tablet") {
+    width: 52px;
+    height: 52px;
   }
 }
 
@@ -512,56 +428,21 @@ ul {
   margin: 12px;
 }
 
-ul {
-  li {
-    &:before {
-      @include themed() {
-        color: t("text");
-      }
-    }
-
-    &:hover {
-      &:before {
-        @include themed() {
-          color: t("base-green");
-        }
-      }
-    }
-  }
-}
-
-
 .list-text,
 .list-text-2,
 .modal-paragraph-header,
 .modal-paragraph-header-2,
 .modal-paragraph-text {
-  @include themed() {
-    color: t("text");
-  }
+  color: vars.$text;
 }
 
 .modal-exit-button {
-  @include themed() {
-    border-color: t("base-green");
-    background-color: t("base-light-beige");
-  }
+  border-color: vars.$base-green;
+  background-color: vars.$base-light-beige;
 }
 
 .exit-button-svg {
-  @include themed() {
-    color: t("svgs");
-  }
-}
-
-.github,
-.linkedin,
-.instagram,
-.mail{
-  @include themed() {
-    stroke: t("svgs");
-    color: t("svgs");
-  }
+  color: vars.$svgs;
 }
 
 .loading-screen {
@@ -597,72 +478,30 @@ ul {
   }
 }
 
-.work-project {
-  @include media.media("<=tablet") {
-    flex-direction: column;
-    gap: 12px; // smaller gap between image and text
-    margin-bottom: 16px; // reduce bottom margin
-  }
-
-  .work-image-wrapper-fill,
-  .work-base-image-fill {
-    @include media.media("<=tablet") {
-      width: 100%;
-      height: auto;
-      max-width: 100%;
-      border-radius: 12px; // slightly smaller radius on mobile
-      margin: 0 auto; // center images
-    }
-
-    img {
-      @include media.media("<=tablet") {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-    }
-  }
-
-  .paragraph-section {
-    @include media.media("<=tablet") {
-      gap: 4px; // reduce gap between header and text
-      .modal-paragraph-header {
-        font-size: 2rem;
-        margin-top: 12px;
-        margin-bottom: 4px;
-      }
-
-      .modal-paragraph-text {
-        font-size: 1.2rem;
-        line-height: 1.4;
-      }
-    }
-  }
-}
-
 .about .image-wrapper {
   @include media.media("<=tablet") {
-    width: 80%;       // increase width from default 50%
-    max-width: 100%;  // ensure it doesn’t overflow
-    height: auto;     // keep aspect ratio
-    margin: 0 auto 16px; // center and give a little spacing
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 16px;
   }
 
   img {
     @include media.media("<=tablet") {
       width: 100%;
       height: auto;
-      object-fit: cover; // fill wrapper nicely
+      object-fit: cover;
     }
   }
 }
 
-/* Use Josefin Sans Regular */
-.modal-title,
-.modal-paragraph-header,
-.modal-paragraph-header-2 {
-  font-size: 2rem;
+@include media.media("<=tablet") {
 
+  .modal-title,
+  .modal-paragraph-header,
+  .modal-paragraph-header-2 {
+    font-size: 2rem;
+  }
 }
 
 .modal-title,
@@ -672,39 +511,4 @@ ul {
 .list-text,
 .list-text-2 {
   font-family: "Josefin Sans-SemiBold";
-  // font-weight: ; // Regular
-  font-weight: 600;
-
-}
-
-
-
-.modal-content-wrapper {
-  flex: 1 1 auto;
-  overflow-y: auto; 
-  -webkit-overflow-scrolling: touch; // smooth momentum scrolling on iOS
-  overscroll-behavior: contain;
-  touch-action: pan-y; // allow vertical touch scrolling
-  min-height: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  // Optional: prevent Safari from bouncing
-  position: relative;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    width: 2px;
-    border-radius: 4px;
-    background-color: #A4AC86;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: vars.$base-dark-green;
-    border-radius: 4px;
-  }
 }
