@@ -91,9 +91,9 @@ ul {
   top: 0;
   left: 0;
   display: none;
-  background-color: rgba(32, 32, 32, 0.2);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background-color: rgba(32, 32, 32, 0.4);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .modal {
@@ -114,10 +114,10 @@ ul {
   border: 8px solid vars.$base-green;
   overscroll-behavior: contain;
   overflow: hidden;
-  /* <- add */
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  /* <- add for iOS */
-  mask-image: radial-gradient(white, black);
+  // /* <- add */
+  // -webkit-mask-image: -webkit-radial-gradient(white, black);
+  // /* <- add for iOS */
+  // mask-image: radial-gradient(white, black);
 }
 
 .about {
@@ -371,10 +371,13 @@ ul {
   right: auto;
 
   z-index: 1;
-  border: 6px solid vars.$base-green;  /* smaller */
+  border: 6px solid vars.$base-green;
+  /* smaller */
   background-color: vars.$base-light-beige;
-  padding: 8px;                         /* smaller */
-  border-radius: 1rem;                  /* slightly tighter */
+  padding: 8px;
+  /* smaller */
+  border-radius: 1rem;
+  /* slightly tighter */
   cursor: pointer;
 
   transform: none;
