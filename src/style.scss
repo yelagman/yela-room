@@ -114,10 +114,6 @@ ul {
   border: 8px solid vars.$base-green;
   overscroll-behavior: contain;
   overflow: hidden;
-  // /* <- add */
-  // -webkit-mask-image: -webkit-radial-gradient(white, black);
-  // /* <- add for iOS */
-  // mask-image: radial-gradient(white, black);
 }
 
 .about {
@@ -549,7 +545,6 @@ ul {
 
 body.modal-open {
   overflow: hidden;
-  /* redundant for most, but ensures full lock */
 }
 
 @supports (-webkit-touch-callout: none) {

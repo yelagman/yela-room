@@ -89,7 +89,7 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
     isTransitioning = true;
     modal.style.display = "block";
     overlay.style.display = "block";
-    lockBodyScroll(); // ✅ lock background scroll on iOS
+    lockBodyScroll();
 
     isModalOpen = true;
     controls.enabled = false;
