@@ -130,7 +130,7 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
         overlay.style.display = "none";
         touchHappened = false;
         isTransitioning = false;
-        unlockBodyScroll(); // ✅ restore scroll position cleanly
+        unlockBodyScroll();
       }
     });
 

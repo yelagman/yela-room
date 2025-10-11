@@ -556,3 +556,12 @@ body.modal-open {
     mask-image: radial-gradient(white, black);
   }
 }
+
+.about .modal-content-wrapper,
+.work .modal-content-wrapper {
+  padding-bottom: 32px;
+
+  @include media.media("<=tablet") {
+    padding-bottom: 48px; // a bit more room for touch scrolling
+  }
+}
