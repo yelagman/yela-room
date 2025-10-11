@@ -542,12 +542,9 @@ body.modal-open {
 }
 
 .modal-inner {
-  overflow: hidden;
-  border-radius: inherit;
   position: relative;
-
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: radial-gradient(white, black);
+  overflow: visible;
+  border-radius: inherit; /* ✅ rounded corners only, no mask */
 }
 
-//
+
