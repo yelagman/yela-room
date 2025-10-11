@@ -115,6 +115,9 @@ ul {
   overscroll-behavior: contain;
 
   overflow: visible;
+
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 
@@ -360,8 +363,7 @@ ul {
 
 .modal-exit-button {
   @include vars.centered;
-  position: absolute;
-  z-index: 10000;
+  position: fixed;
   top: -2.3rem;
   left: -2.3rem;
   border: 8px solid vars.$base-green;
@@ -464,6 +466,11 @@ ul {
   color: vars.$text;
 }
 
+.modal-exit-button {
+  border-color: vars.$base-green;
+  background-color: vars.$base-light-beige;
+}
+
 .exit-button-svg {
   color: vars.$svgs;
 }
@@ -534,17 +541,4 @@ ul {
 .list-text,
 .list-text-2 {
   font-family: "Josefin Sans-SemiBold";
-}
-
-body.modal-open {
-  overflow: hidden;
-  /* redundant for most, but ensures full lock */
-}
-
-.modal-inner {
-  overflow: hidden;
-  border-radius: inherit;
-
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: radial-gradient(white, black);
 }
