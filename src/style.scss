@@ -113,10 +113,12 @@ ul {
   display: none;
   border: 8px solid vars.$base-green;
   overscroll-behavior: contain;
-
-  overflow: visible;
+  overflow: hidden;
+  /* <- add */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  /* <- add for iOS */
+  mask-image: radial-gradient(white, black);
 }
-
 
 .about {
   max-width: 800px;
@@ -227,7 +229,8 @@ ul {
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
-  overflow-y: auto;                  /* already there */
+  overflow-y: auto;
+  /* already there */
   -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
@@ -361,7 +364,6 @@ ul {
 .modal-exit-button {
   @include vars.centered;
   position: absolute;
-  z-index: 10000;
   top: -2.3rem;
   left: -2.3rem;
   border: 8px solid vars.$base-green;
@@ -378,7 +380,6 @@ ul {
   }
 
   @include media.media("<=tablet") {
-
     top: auto;
     left: 50%;
     bottom: -3rem;
@@ -442,7 +443,6 @@ ul {
 
 .xsm-margin-top {
   margin: 10px;
-
 }
 
 .contact .modal-paragraph-header {
@@ -455,13 +455,17 @@ ul {
   }
 }
 
-
 .list-text,
 .list-text-2,
 .modal-paragraph-header,
 .modal-paragraph-header-2,
 .modal-paragraph-text {
   color: vars.$text;
+}
+
+.modal-exit-button {
+  border-color: vars.$base-green;
+  background-color: vars.$base-light-beige;
 }
 
 .exit-button-svg {
@@ -541,10 +545,10 @@ body.modal-open {
   /* redundant for most, but ensures full lock */
 }
 
-.modal-inner {
-  position: relative;
-  overflow: visible;
-  border-radius: inherit; /* ✅ rounded corners only, no mask */
+@supports (-webkit-touch-callout: none) {
+  .modal {
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
 }
-
-
