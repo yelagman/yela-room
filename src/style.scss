@@ -543,3 +543,20 @@ ul {
 .list-text-2 {
   font-family: "Josefin Sans-SemiBold";
 }
+
+
+body.modal-open {
+  overflow: hidden;
+  /* redundant for most, but ensures full lock */
+}
+
+.modal-inner {
+  overflow: hidden;
+  border-radius: inherit;
+
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+//
+
