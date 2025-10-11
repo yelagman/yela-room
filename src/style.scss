@@ -227,7 +227,7 @@ ul {
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
-  overflow-y: auto;                  /* already there */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
@@ -542,9 +542,9 @@ body.modal-open {
 }
 
 .modal-inner {
-  overflow: hidden;
-  border-radius: inherit;
-
+  position: relative;
+  // border-radius: inherit;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   mask-image: radial-gradient(white, black);
+  overflow: visible;
 }
