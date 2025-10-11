@@ -3,13 +3,6 @@ import gsap from "gsap";
 /**
  * Modal Manager
  * Handles all modals (Work, About, Contact) with full GSAP transitions.
- *
- * @param {Object} options
- * @param {Object} options.modals - { work, about, contact }
- * @param {HTMLElement} options.overlay
- * @param {THREE.OrbitControls} options.controls
- * @param {Function} options.playHoverAnimation - to reset hover animations
- * @param {Object} options.sharedState - { currentHoveredObject, currentIntersects }
  */
 export function createModalManager({ modals, overlay, controls, playHoverAnimation, sharedState }) {
   let touchHappened = false;
@@ -17,7 +10,29 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
   let isTransitioning = false;
   let lastModalOpenTime = Date.now();
 
-  // --- Internal helpers ---
+  // --- Scroll lock helpers (for Safari especially) ---
+  let scrollY = 0;
+  function lockBodyScroll() {
+    // works for iOS Safari
+    scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.classList.add("modal-open");
+  }
+
+  function unlockBodyScroll() {
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    document.body.classList.remove("modal-open");
+    window.scrollTo(0, scrollY);
+  }
+
   const getOpenModal = () => document.querySelector('.modal[style*="display: block"]');
 
   function attemptCloseModal() {
@@ -26,7 +41,7 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
     if (modal) hideModal(modal);
   }
 
-  // --- Event bindings ---
+  // --- Overlay events ---
   overlay.addEventListener("touchend", (e) => {
     e.preventDefault();
     attemptCloseModal();
@@ -37,6 +52,7 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
     attemptCloseModal();
   }, { passive: false });
 
+  // --- Exit button handlers ---
   document.querySelectorAll(".modal-exit-button").forEach((button) => {
     const handleModalExit = (e) => {
       e.preventDefault();
@@ -73,6 +89,7 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
     isTransitioning = true;
     modal.style.display = "block";
     overlay.style.display = "block";
+    lockBodyScroll(); // ✅ lock background scroll on iOS
 
     isModalOpen = true;
     controls.enabled = false;
@@ -113,6 +130,7 @@ export function createModalManager({ modals, overlay, controls, playHoverAnimati
         overlay.style.display = "none";
         touchHappened = false;
         isTransitioning = false;
+        unlockBodyScroll(); // ✅ restore scroll position cleanly
       }
     });
 

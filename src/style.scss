@@ -537,16 +537,6 @@ ul {
   font-family: "Josefin Sans-SemiBold";
 }
 
-@supports (-webkit-touch-callout: none) {
-  .modal-content {
-    /* keep your current styles */
-    overflow: hidden;                    /* ensure the area is a clipping context */
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-            mask-image: radial-gradient(white, black); /* standard fallback */
-  }
-
-  .modal-content-wrapper {
-    overflow-y: auto;                     /* the element that actually scrolls */
-    -webkit-overflow-scrolling: touch;    /* momentum scrolling on iOS */
-  }
+body.modal-open {
+  overflow: hidden; /* redundant for most, but ensures full lock */
 }
