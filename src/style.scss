@@ -539,7 +539,14 @@ ul {
 
 @supports (-webkit-touch-callout: none) {
   .modal-content {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
+    /* keep your current styles */
+    overflow: hidden;                    /* ensure the area is a clipping context */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+            mask-image: radial-gradient(white, black); /* standard fallback */
+  }
+
+  .modal-content-wrapper {
+    overflow-y: auto;                     /* the element that actually scrolls */
+    -webkit-overflow-scrolling: touch;    /* momentum scrolling on iOS */
   }
 }
