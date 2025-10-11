@@ -113,12 +113,10 @@ ul {
   display: none;
   border: 8px solid vars.$base-green;
   overscroll-behavior: contain;
-  overflow: hidden;
-  /* <- add */
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  /* <- add for iOS */
-  mask-image: radial-gradient(white, black);
+
+  overflow: visible;
 }
+
 
 .about {
   max-width: 800px;
@@ -363,6 +361,7 @@ ul {
 .modal-exit-button {
   @include vars.centered;
   position: absolute;
+  z-index: 10000;
   top: -2.3rem;
   left: -2.3rem;
   border: 8px solid vars.$base-green;
@@ -465,11 +464,6 @@ ul {
   color: vars.$text;
 }
 
-.modal-exit-button {
-  border-color: vars.$base-green;
-  background-color: vars.$base-light-beige;
-}
-
 .exit-button-svg {
   color: vars.$svgs;
 }
@@ -547,10 +541,10 @@ body.modal-open {
   /* redundant for most, but ensures full lock */
 }
 
-@supports (-webkit-touch-callout: none) {
-  .modal { 
-    overflow: hidden;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-            mask-image: radial-gradient(white, black);
-  }
+.modal-inner {
+  overflow: hidden;
+  border-radius: inherit;
+
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
