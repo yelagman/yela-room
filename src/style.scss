@@ -536,3 +536,10 @@ ul {
 .list-text-2 {
   font-family: "Josefin Sans-SemiBold";
 }
+
+@supports (-webkit-touch-callout: none) {
+  .modal-content {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
