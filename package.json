@@ -10,6 +10,7 @@
     "deploy": "rm -rf docs/* && npm run build && cp -r dist/* docs/"
   },
   "devDependencies": {
+    "rollup-plugin-visualizer": "^6.0.4",
     "vite": "^7.1.7"
   },
   "dependencies": {
