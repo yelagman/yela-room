@@ -115,6 +115,9 @@ ul {
   overscroll-behavior: contain;
 
   overflow: visible;
+
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 
@@ -229,6 +232,7 @@ ul {
   white-space: normal;
   overflow-y: auto;                  /* already there */
   -webkit-overflow-scrolling: touch;
+  scroll-padding-bottom: 40px;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -360,8 +364,7 @@ ul {
 
 .modal-exit-button {
   @include vars.centered;
-  position: absolute;
-  z-index: 10000;
+  position: fixed;
   top: -2.3rem;
   left: -2.3rem;
   border: 8px solid vars.$base-green;
@@ -464,6 +467,11 @@ ul {
   color: vars.$text;
 }
 
+.modal-exit-button {
+  border-color: vars.$base-green;
+  background-color: vars.$base-light-beige;
+}
+
 .exit-button-svg {
   color: vars.$svgs;
 }
@@ -536,6 +544,7 @@ ul {
   font-family: "Josefin Sans-SemiBold";
 }
 
+
 body.modal-open {
   overflow: hidden;
   /* redundant for most, but ensures full lock */
@@ -550,3 +559,4 @@ body.modal-open {
 }
 
 //
+
