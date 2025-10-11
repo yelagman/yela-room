@@ -113,6 +113,11 @@ ul {
   display: none;
   border: 8px solid vars.$base-green;
   overscroll-behavior: contain;
+  overflow: hidden;
+  /* <- add */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  /* <- add for iOS */
+  mask-image: radial-gradient(white, black);
 }
 
 .about {
@@ -193,7 +198,7 @@ ul {
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
 
@@ -215,17 +220,17 @@ ul {
 .modal-content-wrapper {
   flex: 1 1 auto;
   min-height: 0;
-  -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   touch-action: pan-y;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 12px;
-  overflow-y: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  overflow-y: auto;                  /* already there */
+  -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -538,5 +543,14 @@ ul {
 }
 
 body.modal-open {
-  overflow: hidden; /* redundant for most, but ensures full lock */
+  overflow: hidden;
+  /* redundant for most, but ensures full lock */
+}
+
+@supports (-webkit-touch-callout: none) {
+  .modal { 
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+            mask-image: radial-gradient(white, black);
+  }
 }
