@@ -107,7 +107,7 @@ ul {
   transform: translate(-50%, -50%);
   background-color: vars.$base-light-beige;
   font-size: 2.2rem;
-  z-index: 20;
+  z-index: 9999;
   padding: 30px;
   border-radius: 25px;
   display: none;
@@ -437,18 +437,20 @@ ul {
 }
 
 .xsm-margin-top {
-  margin: 20px;
+  margin: 10px;
 
-  .contact .modal-paragraph-header {
-    font-size: 1.4rem;
-    line-height: 1.4;
-    text-align: center;
+}
 
-    @include media.media("<=tablet") {
-      font-size: 1.1rem;
-    }
+.contact .modal-paragraph-header {
+  font-size: 2rem;
+  line-height: 1.4;
+  text-align: center;
+
+  @include media.media("<=tablet") {
+    font-size: 1.6rem;
   }
 }
+
 
 .list-text,
 .list-text-2,
