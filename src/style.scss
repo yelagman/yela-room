@@ -232,6 +232,7 @@ ul {
   white-space: normal;
   overflow-y: auto;                  /* already there */
   -webkit-overflow-scrolling: touch;
+  scroll-padding-bottom: 40px;
 
   &::-webkit-scrollbar {
     width: 8px;
