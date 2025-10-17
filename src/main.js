@@ -90,7 +90,7 @@ loadModel({
   scene,
   yAxisFans,
   raycasterObjects,
-  animatedObjects, 
+  animatedObjects,
   setRefs: ({ chair: c, flowers: f, backpack: b }) => {
     chair = c;
     flowers.push(...f);
@@ -98,9 +98,22 @@ loadModel({
   },
 }).then(() => {
   console.log('Model loaded successfully');
+
+  startRenderLoop({
+    renderer,
+    scene,
+    camera,
+    controls,
+    interactionManager,
+    isModalOpen: modalManager.isModalOpen,
+    animations: {
+      fans: yAxisFans,
+      chair,
+      flowers,
+      backpack,
+    },
+  });
 });
-
-
 
 // ────────────────────────────────────────────────────────────────
 // 5. MODAL MANAGER
@@ -137,25 +150,7 @@ createLoadingScreen({
 });
 
 // ────────────────────────────────────────────────────────────────
-// 8. START RENDER LOOP
-// ────────────────────────────────────────────────────────────────
-startRenderLoop({
-  renderer,
-  scene,
-  camera,
-  controls,
-  interactionManager,
-  isModalOpen: modalManager.isModalOpen,
-  animations: {
-    fans: yAxisFans,
-    chair,
-    flowers,
-    backpack,
-  },
-});
-
-// ────────────────────────────────────────────────────────────────
-// 9. RESIZE HANDLER
+// 8. RESIZE HANDLER
 // ────────────────────────────────────────────────────────────────
 window.addEventListener('resize', () => {
   sizes.width = window.innerWidth;
