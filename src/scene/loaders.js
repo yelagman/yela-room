@@ -1,56 +1,66 @@
+// src/scene/loaders.js
 import * as THREE from "three";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 /**
- * Sets up all Three.js loaders:
- * - DRACO, GLTF, and Texture loaders
- * - Loads all texture maps (day variants)
- * - Creates video texture for the "frog" video
- * Preserves all paths, color spaces, and properties exactly.
+ * Optimized asset loader for Three.js.
+ * - Uses DRACO web workers
+ * - Lazily loads non-critical textures after first render
  */
 export function initLoaders(manager) {
-  // --- TEXTURE LOADER ---
-  const textureLoader = new THREE.TextureLoader();
-
-  // --- DRACO LOADER ---
+  // --- DRACO LOADER (use web workers) ---
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath("draco/");
+  dracoLoader.setWorkerLimit(2);
 
   // --- GLTF LOADER ---
   const gltfLoader = new GLTFLoader(manager);
   gltfLoader.setDRACOLoader(dracoLoader);
 
-  // --- TEXTURE MAPS (identical to your old structure) ---
+  // --- TEXTURE LOADER ---
+  const textureLoader = new THREE.TextureLoader();
+
+  // --- TEXTURE MAP DEFINITION ---
   const textureMap = {
-    First: {
-      day: "textures/first_texture_set.webp",
-    },
-    Second: {
-      day: "textures/second_texture_set.webp",
-    },
-    Third: {
-      day: "textures/third_texture_set.webp",
-    },
-    Fourth: {
-      day: "textures/fourth_texture_set.webp",
-    },
-    Fifth: {
-      day: "textures/fifth_texture_set.webp",
-    },
-    Sixth: {
-      day: "textures/sixth_texture_set.webp",
-    },
+    First: "textures/first_texture_set.webp",
+    Second: "textures/second_texture_set.webp",
+    Third: "textures/third_texture_set.webp",
+    Fourth: "textures/fourth_texture_set.webp",
+    Fifth: "textures/fifth_texture_set.webp",
+    Sixth: "textures/sixth_texture_set.webp",
   };
 
-  const loadedTextures = { day: {} };
-
-  Object.entries(textureMap).forEach(([key, paths]) => {
-    const dayTexture = textureLoader.load(paths.day);
-    dayTexture.flipY = false;
-    dayTexture.colorSpace = THREE.SRGBColorSpace;
-    loadedTextures.day[key] = dayTexture;
+  // --- INITIAL LOAD: only 2 hero textures ---
+  const loadedTextures = {};
+  ["First", "Second"].forEach((key) => {
+    const tex = textureLoader.load(textureMap[key]);
+    tex.flipY = false;
+    tex.colorSpace = THREE.SRGBColorSpace;
+    loadedTextures[key] = tex;
   });
+
+  // --- DEFER NON-CRITICAL TEXTURES ---
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(() => {
+      ["Third", "Fourth", "Fifth", "Sixth"].forEach((key) => {
+        const tex = textureLoader.load(textureMap[key]);
+        tex.flipY = false;
+        tex.colorSpace = THREE.SRGBColorSpace;
+        loadedTextures[key] = tex;
+      });
+    });
+  } else {
+    // fallback for Safari
+    setTimeout(() => {
+      ["Third", "Fourth", "Fifth", "Sixth"].forEach((key) => {
+        const tex = textureLoader.load(textureMap[key]);
+        tex.flipY = false;
+        tex.colorSpace = THREE.SRGBColorSpace;
+        loadedTextures[key] = tex;
+      });
+    }, 0);
+  }
 
   // --- VIDEO TEXTURE ---
   const videoElement = document.createElement("video");
@@ -59,13 +69,13 @@ export function initLoaders(manager) {
   videoElement.autoplay = true;
   videoElement.muted = true;
   videoElement.playsInline = true;
+  videoElement.preload = "metadata";
   videoElement.play();
 
   const videoTexture = new THREE.VideoTexture(videoElement);
   videoTexture.colorSpace = THREE.SRGBColorSpace;
   videoTexture.flipY = false;
 
-  // Return everything ready to use
   return {
     gltfLoader,
     textureLoader,

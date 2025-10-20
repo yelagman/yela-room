@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "rollup-plugin-visualizer": "^6.0.4",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
     "gsap": "^3.13.0",
