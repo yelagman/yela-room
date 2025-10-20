@@ -97,7 +97,7 @@ loadModel({
     backpack = b;
   },
 }).then(() => {
-  console.log('Model loaded successfully');
+  // console.log('Model loaded successfully');
 
   startRenderLoop({
     renderer,
